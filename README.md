@@ -1,10 +1,14 @@
-## 🌐 ITAN
+## 🌐 ANF
 Official implementation of the paper: ANF: Crafting transferable adversarial point clouds via adversarial noise factorization
 
 ## 🌟 Installation
 Install the necessary dependencies following [AOF](https://github.com/code-roamer/AOF).
 
 ## 💾 Run
+```bash
+    python baselines/attack_scripts/cal_sharply.py
+ ```
+To speed up the generation, we have done a multi-card running process on cal_sharply. You can run cal_sharply.py repeatedly, and multiple pkl files will be generated in the specified folder. Then, you can run concat_sharply.py to merge all the pkl files.
 ```bash
     NCCL_DEBUG=INFO CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python -m torch.distributed.launch --nproc_per_node=8 --master_port=29506  baselines/attack_scripts/untargeted_sharply_feature_attack.py --test_batch_size 35
  ```
